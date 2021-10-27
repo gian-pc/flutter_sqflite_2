@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -39,4 +40,14 @@ class DBGlobal {
   }
 
   // Insertar Datos
+
+  Future<int> insertBand(Band myBand) async {
+    final db = await getDatabase;
+    final int res = await db!.insert(
+      "Band",
+      myBand.convertToMap(),
+    );
+
+    return res;
+  }
 }

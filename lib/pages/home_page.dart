@@ -1,7 +1,9 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_sqflite_2/db/db_global.dart';
+import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
+import 'package:flutter_codigo3_sqflite_2/pages/list_band_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,6 +55,18 @@ class _HomePageState extends State<HomePage> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        print("QRRRRRRRRRRR: ${result!.code}");
+
+        if(result!=null){
+          Band myBand = new Band(
+            bandName: result!.code,
+            status: "true",
+            favorite: "false"
+          );
+          DBGlobal.db.insertBand(myBand);
+        }
+
+
       });
     });
   }
@@ -84,20 +98,30 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 if (result != null)
                   Text(
-                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                      'Banda: ${result!.code}')
                 else
-                  Text('Scan a code'),
+                  Text('Escanea el QR'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.all(8),
-                      child: ElevatedButton(
+                      child: ElevatedButton.icon(
+                        icon: Icon(Icons.remove_red_eye),
                         onPressed: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>ListBandPage())
+                          );
 
                         },
-                        child: Text("Ver lista d bandas"),
+                        label: Text("Ver lista d bandas"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xff282A3C),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:BorderRadius.circular(10.0)
+                          )
+                        ),
                       )
                     ),
 
