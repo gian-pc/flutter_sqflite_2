@@ -120,7 +120,36 @@ class ListBandPage extends StatelessWidget {
                       status: true,
                       favorite: true,
                     ),
-
+                    ItemListWidget(
+                      nameBand: "Arcade Fire",
+                      status: true,
+                      favorite: true,
+                    ),
+                    ItemListWidget(
+                      nameBand: "Fantast",
+                      status: true,
+                      favorite: false,
+                    ),
+                    ItemListWidget(
+                      nameBand: "Alter Bridge",
+                      status: true,
+                      favorite: true,
+                    ),
+                    ItemListWidget(
+                      nameBand: "Belle and Sebastian",
+                      status: true,
+                      favorite: true,
+                    ),
+                    ItemListWidget(
+                      nameBand: "Cage the Elephant",
+                      status: true,
+                      favorite: false,
+                    ),
+                    ItemListWidget(
+                      nameBand: "Sister Hazel",
+                      status: true,
+                      favorite: true,
+                    ),
                     ItemListWidget(
                       nameBand: "Arcade Fire",
                       status: true,
@@ -172,7 +201,7 @@ class ItemListWidget extends StatelessWidget {
               color: Color(0xff282A3C),
               fontWeight: FontWeight.w500),
         ),
-        subtitle: Text("Estado:Activo"),
+        subtitle: Text(this.status? "Estado: Activo": "Estado: Desactivo"),
         trailing: IconButton(
           onPressed: () {},
           icon:this.favorite?
