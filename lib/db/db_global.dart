@@ -19,18 +19,23 @@ class DBGlobal {
 
   //Creación de la base de datos y las tablas
 
-  initDB() async {
+  Future<Database> initDB() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentDirectory.path, "BandDB.db");
-    return openDatabase(
-      path,
-      version: 1,
-      onOpen: (db){},
-      onCreate: (Database db, int version){
-        db.execute("CREATE TABLE Band(id INTEGER PRIMARY KEY AUTOINCREMENT, bandName TEXT, status TEXT,favorite TEXT)");
-        
-      }
-    );
-
+    return await openDatabase(path, version: 1, onOpen: (db) {},
+        onCreate: (Database db, int version) async {
+      await db.execute(
+          "CREATE TABLE Band(id INTEGER PRIMARY KEY AUTOINCREMENT, bandName TEXT, status TEXT,favorite TEXT)");
+    });
   }
+
+  // Obtener Datos
+
+  Future<List<Map<String, dynamic>>> getAllBands() async {
+    final db = await getDatabase;
+    final List<Map<String, dynamic>> res = await db!.query("Band");
+    return res;
+  }
+
+  // Insertar Datos
 }
