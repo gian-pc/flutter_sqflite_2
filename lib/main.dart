@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_sqflite_2/pages/home_page.dart';
 
-import 'package:flutter_codigo3_sqflite_2/pages/list_band_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ListBandPage(),
+      home: HomePage(),
     );
   }
 }
