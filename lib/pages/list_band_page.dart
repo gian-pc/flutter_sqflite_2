@@ -62,362 +62,263 @@ class ListBandPage extends StatelessWidget {
             SizedBox(height: 20,),
             //Items
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(32.0),
+                    topRight: Radius.circular(32.0),
+                  )
+
+                ),
+
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                            "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                            "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.tealAccent,
-                          child: Text(
-                            "A",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
                           ),
                         ),
-                        title: Text(
-                          "Alter Bridge",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          "Estado:Activo",
-                          style: TextStyle(color: Colors.white),
+                      ),
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.tealAccent,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          title: Text(
+                              "Alter Bridge"
+                          ),
+                          subtitle: Text(
+                              "Estado:Activo"
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
                 ),
               ),
             ),
