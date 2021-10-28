@@ -35,7 +35,7 @@ class DBGlobal {
   Future<List<Map<String, dynamic>>> getAllBands() async {
     final db = await getDatabase;
     final List<Map<String, dynamic>> res = await db!.query("Band");
-    print(res);
+    print(res.length);
     return res;
   }
 

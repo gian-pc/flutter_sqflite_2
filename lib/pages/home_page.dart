@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo3_sqflite_2/db/db_global.dart';
-import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
-import 'package:flutter_codigo3_sqflite_2/pages/list_band_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +15,20 @@ class _HomePageState extends State<HomePage> {
   QRViewController? controller;
 
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
+  List<Map<String, dynamic>> misBandas = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    misBandas = await DBGlobal.db.getAllBands();
+    print("LA BANDA EXISTEEEEEEEE? ${existBand("Rata Blanca")}");
+  }
 
   @override
   void reassemble() {
@@ -55,20 +67,30 @@ class _HomePageState extends State<HomePage> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        print("QRRRRRRRRRRR: ${result!.code}");
+        if (result != null) {
+          print(result!.code);
 
-        if(result!=null){
-          Band myBand = new Band(
-            bandName: result!.code,
-            status: "true",
-            favorite: "false"
-          );
-          DBGlobal.db.insertBand(myBand);
+
+          // Band myBand = new Band(
+          //   bandName: result!.code,
+          //   status: "true",
+          //   favorite: "false",
+          // );
+          // DBGlobal.db.insertBand(myBand);
+
         }
-
-
       });
     });
+  }
+
+  bool existBand(String bandName) {
+    bool res = false;
+    for (var item in misBandas) {
+      if(item["bandName"].toString().toLowerCase()==bandName.toLowerCase()){
+        res = true;
+      }
+    }
+    return res;
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
@@ -97,8 +119,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 if (result != null)
-                  Text(
-                      'Banda: ${result!.code}')
+                  Text('Banda: ${result!.code}')
                 else
                   Text('Escanea el QR'),
                 Row(
@@ -109,25 +130,24 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.all(8),
                       child: ElevatedButton.icon(
                         icon: Icon(Icons.remove_red_eye),
-                        onPressed: (){
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>ListBandPage())
-                          );
-
+                        onPressed: () {
+                          DBGlobal.db.getAllBands();
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => ListBandPage(),
+                          //   ),
+                          // );
                         },
-                        label: Text("Ver lista d bandas"),
+                        label: Text("Ver lista de bandas"),
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xff282A3C),
-                          shape: RoundedRectangleBorder(
-                            borderRadius:BorderRadius.circular(10.0)
-                          )
-                        ),
-                      )
+                            primary: Color(0xff282A3C),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                      ),
                     ),
-
                   ],
                 ),
-
               ],
             ),
           )
