@@ -42,18 +42,25 @@ class DBGlobal {
 
   Future<int> insertBand(Band myBand) async {
     final db = await getDatabase;
-    final int res = await db!.insert(
-      "Band",
-      myBand.convertToMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace
-    );
+    final int res = await db!.insert("Band", myBand.convertToMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
     return res;
   }
 
   // Actualizar Datos
-  Future<int> updateBand(Band myBand) async{
+  Future<int> updateBand(Band myBand) async {
     final db = await getDatabase;
-    final int res = await db!.update("Band", myBand.convertToMap(),where:"id=${myBand.id}");
+    final int res = await db!
+        .update("Band", myBand.convertToMap(), where: "id=${myBand.id}");
     return res;
+  }
+
+  // Delete Datos
+
+  Future<int> deleteBand(int id) async{
+    final db = await getDatabase;
+    final int res = await db!.delete("Band", where: "id=$id");
+    return res;
+
   }
 }

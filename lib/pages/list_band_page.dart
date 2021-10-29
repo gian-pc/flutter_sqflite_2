@@ -33,9 +33,51 @@ class _ListBandPageState extends State<ListBandPage> {
 
   getData() async {
     misBandas = await DBGlobal.db.getAllBands();
-    setState(() {
+    setState(() {});
+  }
 
-    });
+  showAlertDelete(int id) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.redAccent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+          title: Text(
+            "¿Eliminar banda?",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          ),
+          content: Text(
+            "La banda seleccionada será eliminada.",
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Cancelar",
+                  style: TextStyle(color: Colors.white38),
+                )),
+            TextButton(
+                onPressed: () {
+                  DBGlobal.db.deleteBand(id).then((value) {
+                    getData();
+                  });
+
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Aceptar",
+                  style: TextStyle(color: Colors.white),
+                )),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -146,6 +188,10 @@ class _ListBandPageState extends State<ListBandPage> {
                       nameBand: misBandas[index]["bandName"],
                       status: status,
                       favorite: favorite,
+                      onLongPress: (){
+                        showAlertDelete(misBandas[index]["id"]);
+
+                      },
                     );
                   },
                 ),
@@ -159,14 +205,19 @@ class _ListBandPageState extends State<ListBandPage> {
 }
 
 class ItemListWidget extends StatefulWidget {
-
   int id;
   String nameBand;
   bool status;
   bool favorite;
+  Function? onLongPress;
 
-  ItemListWidget(
-      {required this.nameBand, required this.status, required this.favorite, required this.id});
+  ItemListWidget({
+    required this.nameBand,
+    required this.status,
+    required this.favorite,
+    required this.id,
+    this. onLongPress,
+  });
 
   @override
   _ItemListWidgetState createState() => _ItemListWidgetState();
@@ -175,44 +226,48 @@ class ItemListWidget extends StatefulWidget {
 class _ItemListWidgetState extends State<ItemListWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Color(0xffF3D145),
-          child: Text(
-            this.widget.nameBand[0],
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w500,
-                color: Colors.white),
+    return GestureDetector(
+      onLongPress: () {
+        this.widget.onLongPress!();
+      },
+      child: Container(
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Color(0xffF3D145),
+            child: Text(
+              this.widget.nameBand[0],
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white),
+            ),
           ),
-        ),
-        title: Text(
-          this.widget.nameBand,
-          style: TextStyle(
-              fontSize: 17.0,
-              color: Color(0xff282A3C),
-              fontWeight: FontWeight.w500),
-        ),
-        subtitle: Text(this.widget.status ? "Estado: Activo" : "Estado: Desactivo"),
-        trailing: IconButton(
-          onPressed: () {
-            this.widget.favorite = !this.widget.favorite;
-            setState(() {
-              Band bandUpdate =new Band(
-                id:this.widget.id,
-                bandName: this.widget.nameBand,
-                status: this.widget.status.toString(),
-                favorite: this.widget.favorite.toString()
-              );
-              
-              DBGlobal.db.updateBand(bandUpdate);
+          title: Text(
+            this.widget.nameBand,
+            style: TextStyle(
+                fontSize: 17.0,
+                color: Color(0xff282A3C),
+                fontWeight: FontWeight.w500),
+          ),
+          subtitle:
+              Text(this.widget.status ? "Estado: Activo" : "Estado: Desactivo"),
+          trailing: IconButton(
+            onPressed: () {
+              this.widget.favorite = !this.widget.favorite;
+              setState(() {
+                Band bandUpdate = new Band(
+                    id: this.widget.id,
+                    bandName: this.widget.nameBand,
+                    status: this.widget.status.toString(),
+                    favorite: this.widget.favorite.toString());
 
-            });
-          },
-          icon: this.widget.favorite
-              ? Icon(Icons.favorite, color: Colors.redAccent, size: 26.0)
-              : Icon(Icons.favorite_border, size: 26.0),
+                DBGlobal.db.updateBand(bandUpdate);
+              });
+            },
+            icon: this.widget.favorite
+                ? Icon(Icons.favorite, color: Colors.redAccent, size: 26.0)
+                : Icon(Icons.favorite_border, size: 26.0),
+          ),
         ),
       ),
     );
