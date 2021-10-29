@@ -10,12 +10,16 @@ class ListBandPage extends StatefulWidget {
 
 class _ListBandPageState extends State<ListBandPage> {
 
+
+  List<Map<String, dynamic>> misBandas = [];
+
+
   @override
   initState(){
     super.initState();
     //insertBand();
+    getData();
   }
-
 
   insertBand(){
     Band band1 = new Band(bandName: "tictock1",favorite: "false",status: "true");
@@ -26,6 +30,11 @@ class _ListBandPageState extends State<ListBandPage> {
     DBGlobal.db.insertBand(band2);
     DBGlobal.db.insertBand(band3);
 
+  }
+
+  getData() async{
+    misBandas = await DBGlobal.db.getAllBands();
+    print(misBandas);
   }
 
 
