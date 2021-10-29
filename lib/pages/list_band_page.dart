@@ -1,7 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_sqflite_2/db/db_global.dart';
+import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
 
-class ListBandPage extends StatelessWidget {
+class ListBandPage extends StatefulWidget {
+  @override
+  _ListBandPageState createState() => _ListBandPageState();
+}
+
+class _ListBandPageState extends State<ListBandPage> {
+
+  @override
+  initState(){
+    super.initState();
+    //insertBand();
+  }
+
+
+  insertBand(){
+    Band band1 = new Band(bandName: "tictock1",favorite: "false",status: "true");
+    Band band2 = new Band(bandName: "tictock2",favorite: "false",status: "true");
+    Band band3 = new Band(bandName: "tictock3",favorite: "false",status: "true");
+
+    DBGlobal.db.insertBand(band1);
+    DBGlobal.db.insertBand(band2);
+    DBGlobal.db.insertBand(band3);
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -26,7 +25,7 @@ class DBGlobal {
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute(
-          "CREATE TABLE Band(id INTEGER PRIMARY KEY AUTOINCREMENT, bandName TEXT, status TEXT,favorite TEXT)");
+          "CREATE TABLE Band(id INTEGER PRIMARY KEY AUTOINCREMENT, bandName TEXT UNIQUE, status TEXT,favorite TEXT)");
     });
   }
 
@@ -46,6 +45,7 @@ class DBGlobal {
     final int res = await db!.insert(
       "Band",
       myBand.convertToMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace
     );
 
     return res;

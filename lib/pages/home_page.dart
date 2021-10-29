@@ -1,7 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo3_sqflite_2/db/db_global.dart';
+import 'package:flutter_codigo3_sqflite_2/models/band_model.dart';
+import 'package:flutter_codigo3_sqflite_2/pages/list_band_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,12 +12,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Barcode? result;
-
   QRViewController? controller;
-
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-
   List<Map<String, dynamic>> misBandas = [];
+  String name = "";
 
   @override
   void initState() {
@@ -27,7 +26,6 @@ class _HomePageState extends State<HomePage> {
 
   getData() async {
     misBandas = await DBGlobal.db.getAllBands();
-    print("LA BANDA EXISTEEEEEEEE? ${existBand("Rata Blanca")}");
   }
 
   @override
@@ -68,16 +66,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         result = scanData;
         if (result != null) {
-          print(result!.code);
-
-
-          // Band myBand = new Band(
-          //   bandName: result!.code,
-          //   status: "true",
-          //   favorite: "false",
-          // );
-          // DBGlobal.db.insertBand(myBand);
-
+          name = result!.code;
         }
       });
     });
@@ -86,7 +75,7 @@ class _HomePageState extends State<HomePage> {
   bool existBand(String bandName) {
     bool res = false;
     for (var item in misBandas) {
-      if(item["bandName"].toString().toLowerCase()==bandName.toLowerCase()){
+      if (item["bandName"].toString().toLowerCase() == bandName.toLowerCase()) {
         res = true;
       }
     }
@@ -112,9 +101,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Expanded(flex: 5, child: _buildQrView(context)),
+          Expanded(flex: 6, child: _buildQrView(context)),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -129,15 +118,46 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       margin: EdgeInsets.all(8),
                       child: ElevatedButton.icon(
+                        icon: Icon(Icons.add),
+                        onPressed: name.length>0?()async {
+                          if (name.length>0) {
+                            if(!existBand(name)){
+                              Band myBand = new Band(
+                                bandName: result!.code,
+                                status: "true",
+                                favorite: "false",
+                              );
+                              DBGlobal.db.insertBand(myBand);
+                              getData();
+                              name = "";
+                            }
+                          }
+                        }:null,
+                        label: Text("Agregar banda"),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xff00bf90),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      child: ElevatedButton.icon(
                         icon: Icon(Icons.remove_red_eye),
                         onPressed: () {
                           DBGlobal.db.getAllBands();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => ListBandPage(),
-                          //   ),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ListBandPage(),
+                            ),
+                          );
                         },
                         label: Text("Ver lista de bandas"),
                         style: ElevatedButton.styleFrom(
