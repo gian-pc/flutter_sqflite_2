@@ -47,7 +47,6 @@ class DBGlobal {
       myBand.convertToMap(),
       conflictAlgorithm: ConflictAlgorithm.replace
     );
-
     return res;
   }
 }
