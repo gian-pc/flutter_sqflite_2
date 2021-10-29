@@ -49,4 +49,11 @@ class DBGlobal {
     );
     return res;
   }
+
+  // Actualizar Datos
+  Future<int> updateBand(Band myBand) async{
+    final db = await getDatabase;
+    final int res = await db!.update("Band", myBand.convertToMap(),where:"id=${myBand.id}");
+    return res;
+  }
 }

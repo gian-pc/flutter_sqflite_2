@@ -33,7 +33,9 @@ class _ListBandPageState extends State<ListBandPage> {
 
   getData() async {
     misBandas = await DBGlobal.db.getAllBands();
-    print(misBandas);
+    setState(() {
+
+    });
   }
 
   @override
@@ -140,6 +142,7 @@ class _ListBandPageState extends State<ListBandPage> {
                     bool status = misBandas[index]["status"] == 'true';
 
                     return ItemListWidget(
+                      id: misBandas[index]["id"],
                       nameBand: misBandas[index]["bandName"],
                       status: status,
                       favorite: favorite,
@@ -156,12 +159,14 @@ class _ListBandPageState extends State<ListBandPage> {
 }
 
 class ItemListWidget extends StatefulWidget {
+
+  int id;
   String nameBand;
   bool status;
   bool favorite;
 
   ItemListWidget(
-      {required this.nameBand, required this.status, required this.favorite});
+      {required this.nameBand, required this.status, required this.favorite, required this.id});
 
   @override
   _ItemListWidgetState createState() => _ItemListWidgetState();
@@ -194,6 +199,14 @@ class _ItemListWidgetState extends State<ItemListWidget> {
           onPressed: () {
             this.widget.favorite = !this.widget.favorite;
             setState(() {
+              Band bandUpdate =new Band(
+                id:this.widget.id,
+                bandName: this.widget.nameBand,
+                status: this.widget.status.toString(),
+                favorite: this.widget.favorite.toString()
+              );
+              
+              DBGlobal.db.updateBand(bandUpdate);
 
             });
           },
